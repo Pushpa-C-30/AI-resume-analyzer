@@ -3,11 +3,9 @@
 An AI-based web application that analyzes resumes and extracts important information using **Natural Language Processing (NLP)** and **Machine Learning** techniques.
 
 🔗 **Live Website:**
- 
  https://pushpa-c-30.github.io/AI-resume-analyzer/
 
 🔗 **GitHub Repository:**
-
 https://github.com/Pushpa-C-30/AI-Resume-Analyzer
 
 ---
