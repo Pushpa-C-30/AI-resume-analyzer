@@ -224,14 +224,16 @@
       background: var(--danger-lt);
       border: 1px solid #fca5a5;
       border-radius: 8px;
-      padding: .7rem 1rem;
+      padding: .85rem 1rem;
       color: var(--danger);
       font-size: .88rem;
       margin-top: 1rem;
       display: none;
-      align-items: center;
-      gap: .5rem;
+      flex-direction: column;
+      gap: .3rem;
     }
+    .error-banner .err-main { display: flex; align-items: center; gap: .5rem; font-weight: 600; }
+    .error-banner .err-hint { font-size: .8rem; color: var(--muted); padding-left: 1.4rem; }
 
     /* ── results ────────────────────────────────────────────── */
     #results { display: none; margin-top: 2.5rem; }
@@ -748,6 +750,8 @@
 <!-- ── SCRIPT ─────────────────────────────────────────────────────── -->
 <script>
   /* ── config ─────────────────────────────────────────── */
+  // ▼ CHANGE THIS to your deployed backend URL after hosting on Render/Railway
+  // e.g. "https://your-app-name.onrender.com"
   const API_BASE = "http://localhost:5000";
 
   /* ── DOM refs ───────────────────────────────────────── */
@@ -823,7 +827,16 @@
 
     } catch (err) {
       progressWrap.style.display = "none";
-      showError(err.message);
+      const isNetwork = err instanceof TypeError && err.message.toLowerCase().includes("fetch");
+      if (isNetwork) {
+        showError(
+          "Cannot reach the backend server.",
+          "The Flask API is not running or not deployed yet. " +
+          "Deploy it on Render/Railway and update API_BASE in the HTML."
+        );
+      } else {
+        showError(err.message);
+      }
       analyzeBtn.disabled = false;
     }
   }
