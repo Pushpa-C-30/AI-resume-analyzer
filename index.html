@@ -263,7 +263,7 @@
     /* ── score overview grid ────────────────────────────────── */
     .score-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
@@ -453,7 +453,7 @@
 
     /* ── top role panel ─────────────────────────────────────── */
     .top-role-name {
-      font-size: 1.55rem;
+      font-size: clamp(1.15rem, 4vw, 1.55rem);
       font-weight: 800;
       color: var(--teal);
       margin-bottom: .4rem;
@@ -491,9 +491,11 @@
       .main { padding: 1.2rem 1rem; }
       .hero { padding: 1.8rem .5rem 1.5rem; }
       .hero-eyebrow { font-size: .7rem; padding: 3px 10px; }
+      .hero p { font-size: .92rem; }
       .upload-card { padding: 1.6rem 1rem; }
       .upload-icon-wrap { width: 56px; height: 56px; font-size: 1.6rem; }
       .score-grid { grid-template-columns: 1fr 1fr; gap: .7rem; }
+      .score-card { padding: 1rem .75rem; }
       .score-card .val { font-size: 1.7rem; }
       .panel { padding: 1rem; }
       .section-title { font-size: .92rem; }
@@ -501,6 +503,16 @@
       .file-input-wrap .btn, .file-input-wrap label { width: 100%; text-align: center; }
       .reset-row { display: flex; flex-direction: column; gap: .7rem; align-items: center; }
       .reset-row .btn { width: 100%; max-width: 320px; }
+      .ats-table { font-size: .78rem; }
+      .role-name { font-size: .82rem; }
+    }
+
+    /* ── very small phones (≤360px) ─────────────────────────── */
+    @media (max-width: 360px) {
+      .score-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
+      .score-card .val { font-size: 1.45rem; }
+      .score-card .label { font-size: .65rem; }
+      .hero h1 { font-size: 1.6rem; }
     }
 
     /* ── download report card ───────────────────────────────── */
